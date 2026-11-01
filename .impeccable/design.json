@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T19:47:22+05:30",
+  "title": "Design System: Empire UI",
+  "extensions": {
+    "colorMeta": {
+      "neutral-bg": { "role": "neutral", "displayName": "Near black", "canonical": "#050505" },
+      "neutral-fg": { "role": "neutral", "displayName": "Snow", "canonical": "#f7f7f7" },
+      "white": { "role": "neutral", "displayName": "White", "canonical": "#ffffff" },
+      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#d7d7d7" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Dot display", "purpose": "Large Empire UI wordmark statement." },
+      "body": { "displayName": "Dot body", "purpose": "Reference-inspired explanatory copy." }
+    },
+    "shadows": [
+      { "name": "sphere-glow", "value": "canvas shadowBlur 4px, rgba(255,255,255,.08)", "purpose": "A faint edge separation around reflective spheres only." }
+    ],
+    "motion": [
+      { "name": "sphere-physics", "value": "gravity .115; collision restitution .72; pointer influence 155px", "purpose": "Make the dense lower sphere field react with gentle weight to the pointer." },
+      { "name": "sphere-cursor-light", "value": "52px white source sphere within 155px; no source corona; progressive ball aura and reflection falloff 180px; aura radius 1.55× ball radius", "purpose": "Replace the native cursor with a compact bright-white source and make only close balls glow according to distance." },
+      { "name": "community-hover", "value": "180ms ease", "purpose": "Invert the community pill and lift it 2px on hover." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "680px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Community link",
+      "kind": "button",
+      "refersTo": "community-link",
+      "description": "Pill-shaped link to the Empire UI community.",
+      "html": "<a class=\"community-link\" href=\"https://discord.gg/RdKBQbFH\">Join community</a>",
+      "css": ".community-link { min-height: 50px; padding: 0 20px; border: 1.5px solid #fff; border-radius: 999px; color: #fff; background: #050505; text-transform: uppercase; } .community-link:hover { color: #050505; background: #fff; transform: translateY(-2px); }"
+    }
+  ]
+}
