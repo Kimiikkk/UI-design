@@ -1,6 +1,6 @@
 ---
 name: Empire UI
-description: A monochrome landing page built from dotted lettering and physical-feeling spheres.
+description: A monochrome product landing page with Minecraft-inspired pixel typography, a dotted card reveal, and interactive solid spheres.
 colors:
   neutral-bg: "#050505"
   neutral-fg: "#f7f7f7"
@@ -10,21 +10,22 @@ colors:
   sphere-shadow: "#999999"
 typography:
   display:
-    fontFamily: "Space Mono, Courier New, monospace"
+    fontFamily: "Pixelify Sans, Courier New, monospace"
     fontSize: "clamp(86px, 15.1vw, 218px)"
     fontWeight: 700
-    lineHeight: 0.92
-    letterSpacing: "-0.105em"
+    lineHeight: 1
+    letterSpacing: "-0.04em"
   headline:
-    fontFamily: "Space Mono, Courier New, monospace"
+    fontFamily: "Pixelify Sans, Courier New, monospace"
     fontSize: "clamp(34px, 5.05vw, 74px)"
     fontWeight: 700
-    lineHeight: 1.13
+    lineHeight: 1.25
+    letterSpacing: ".02em"
   body:
-    fontFamily: "Space Mono, Courier New, monospace"
-    fontSize: "clamp(13px, 1.58vw, 20px)"
-    lineHeight: 1.75
-    letterSpacing: "-0.055em"
+    fontFamily: "Pixelify Sans, Courier New, monospace"
+    fontSize: "clamp(15px, 1.35vw, 18px)"
+    lineHeight: 1.8
+    letterSpacing: ".02em"
 rounded:
   pill: "999px"
 spacing:
@@ -41,43 +42,43 @@ components:
 
 ## Overview
 
-The page translates the supplied black-and-white Empire UI reference into a single-screen landing surface. Repeated dots shape the lettering and perimeter; softly shaded spheres provide the dimensional motion. Keep the field dense across the lower portion while preserving clear space around the copy.
+The page translates the supplied black-and-white Empire UI reference into a scrollable product landing page. Product highlights lead into a hero with Minecraft-inspired Pixelify Sans lettering, a dotted perimeter, and softly shaded spheres that respond to the pointer. Keep the lower sphere field dense while preserving readable space around the copy.
 
 ## Colors
 
 ### Primary
-- **Snow** (#f7f7f7): dotted lettering and primary copy against the black stage.
+- **Snow** (#f7f7f7): pixel lettering and primary copy against the black stage.
 
 ### Neutral
 - **Near black** (#050505): the uninterrupted stage and CTA background.
-- **White** (#ffffff): the border dots, brightest letter dots, and sphere highlights.
+- **White** (#ffffff): border dots, card matrix animation, and sphere highlights.
 - **Muted** (#d7d7d7): small interaction guidance.
 - **Sphere middle** (#c9c9c9): the central reflective surface of each ball.
 - **Sphere shadow** (#999999): the outside rolloff that rounds each sphere.
 
 ## Typography
 
-**Display Font:** Space Mono (with Courier New and monospace fallback)  
-**Body Font:** Space Mono (with Courier New and monospace fallback)
+**Display Font:** Pixelify Sans (self-hosted, with Courier New and monospace fallback)  
+**Body Font:** Pixelify Sans (self-hosted, with Courier New and monospace fallback)  
 
-**Character:** Monospaced forms are filled with a repeating dot field. Hierarchy comes from dot scale, type size, and whitespace.
+**Character:** Blocky pixel forms carry the Minecraft-inspired voice. Hierarchy comes from pixel scale, type size, and whitespace; repeated dots remain in the perimeter and card reveal.
 
 ### Hierarchy
-- **Display** (700, clamp(86px, 15.1vw, 218px), .92): the large “Empire UI” statement.
-- **Headline** (700, clamp(34px, 5.05vw, 74px), 1.13): the short “Why Empire UI” title.
-- **Body** (400, clamp(13px, 1.58vw, 20px), 1.75): explanatory copy, sized down at mobile widths.
+- **Display** (700, clamp(86px, 15.1vw, 218px), 1): the large “Empire UI” statement.
+- **Headline** (700, clamp(34px, 5.05vw, 74px), 1.25): the short “Why Empire UI” title.
+- **Body** (400, clamp(15px, 1.35vw, 18px), 1.8): explanatory copy, sized down at mobile widths.
 - **Label** (400, 10px, .1em, uppercase): the small pointer interaction cue.
 
 ### Named Rules
-**The Dot Field Rule.** Display and supporting copy use dotted fills; avoid solid display lettering on this surface.
+**The Pixel Voice Rule.** Use solid Pixelify Sans for Minecraft-inspired lettering. Reserve dot patterns for the perimeter and the slow radial card reveal so body copy remains readable.
 
 ## Layout
 
-The first screen uses a full-viewport black canvas with the copy at the upper left, a large wordmark statement through the middle, and the community action at the lower left. Keep the right half open. The sphere field sits behind the wordmark and occupies the bottom area. A 680px breakpoint tightens the outer padding and scales the wordmark to fit phones; short desktop viewports reduce the top and bottom spacing.
+The product highlights section sits above the full-viewport hero. In the hero, copy anchors the upper left, a large wordmark crosses the middle, and the community action sits at the lower left. Keep the right half visually open. The sphere field sits behind the wordmark and occupies the bottom area. A 680px breakpoint stacks the product cards and scales the wordmark for phones; vertical scrolling remains available over the sphere field.
 
 ## Elevation & Depth
 
-There are no card surfaces. Sphere depth comes from an opaque radial highlight-to-shadow color ramp, a moving specular reflection, and a faint 4px edge shadow. Near the field, the pointer becomes a 52px bright-white sphere without an outer corona. Nearby balls gain their own soft white aura according to distance from the source; only lighting radii change, never the physical sphere sizes. Avoid a hard flare or rays.
+Product cards use their source imagery with white outlines, a dark label strip, and a slow dot-matrix reveal on hover or keyboard focus. Sphere depth comes from an opaque radial highlight-to-shadow color ramp, a moving specular reflection, and a faint 4px edge shadow. Near the field, the pointer becomes a 52px bright-white sphere without an outer corona. Nearby balls gain their own soft white aura according to distance from the source; only lighting radii change, never the physical sphere sizes. Avoid a hard flare or rays.
 
 ## Shapes
 
@@ -98,7 +99,7 @@ The perimeter is a chain of evenly spaced dots. Spheres are circular. The commun
 
 ### Do:
 - **Do** keep the base nearly black and the contrast monochrome.
-- **Do** use dots as a consistent lettering and perimeter material.
+- **Do** use Pixelify Sans for the Minecraft-inspired letterforms and dots for the perimeter and card reveal.
 - **Do** keep the right side visually open and let the sphere field remain interactive.
 
 ### Don't:

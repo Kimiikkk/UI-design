@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
+import '@fontsource/pixelify-sans/latin-400.css';
+import '@fontsource/pixelify-sans/latin-700.css';
 import './styles.css';
 
 function SphereField() {
@@ -285,6 +287,7 @@ function SphereField() {
     interactionSurface.addEventListener('pointermove', setPointer);
     interactionSurface.addEventListener('pointerleave', clearPointer);
     interactionSurface.addEventListener('pointerdown', setPointer);
+    interactionSurface.addEventListener('pointercancel', clearPointer);
     window.addEventListener('resize', resize);
 
     return () => {
@@ -292,6 +295,7 @@ function SphereField() {
       interactionSurface.removeEventListener('pointermove', setPointer);
       interactionSurface.removeEventListener('pointerleave', clearPointer);
       interactionSurface.removeEventListener('pointerdown', setPointer);
+      interactionSurface.removeEventListener('pointercancel', clearPointer);
       window.removeEventListener('resize', resize);
     };
   }, []);
@@ -334,26 +338,24 @@ function App() {
     return morseMap[character] || '';
   }).filter(Boolean).join(' ');
 
-  const trackCardPointer = (event) => {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    event.currentTarget.style.setProperty('--card-x', `${event.clientX - bounds.left}px`);
-    event.currentTarget.style.setProperty('--card-y', `${event.clientY - bounds.top}px`);
-  };
   const highlightPage = () => pageRef.current?.classList.add('page-frame--feature-focus');
   const clearPageHighlight = () => pageRef.current?.classList.remove('page-frame--feature-focus');
+  const clearPointerHighlight = (event) => {
+    if (!event.currentTarget.matches(':focus-visible')) clearPageHighlight();
+  };
   const cards = [
-    { id: 'backgrounds', label: 'Backgrounds', className: 'feature-card--backgrounds', art: 'rings' },
-    { id: 'textures', label: 'Textures', className: 'feature-card--textures', art: 'texture' },
-    { id: 'components', label: 'Components', className: 'feature-card--components', art: 'speaker' },
-    { id: 'navigation', label: 'Navigation', className: 'feature-card--navigation', art: 'navigation' },
-    { id: 'cursors', label: 'Cursors', className: 'feature-card--cursors', art: 'cursor' },
+    { id: 'backgrounds', label: 'Backgrounds', className: 'feature-card--backgrounds' },
+    { id: 'textures', label: 'Textures', className: 'feature-card--textures' },
+    { id: 'components', label: 'Components', className: 'feature-card--components' },
+    { id: 'navigation', label: 'Navigation', className: 'feature-card--navigation' },
+    { id: 'cursors', label: 'Cursors', className: 'feature-card--cursors' },
   ];
 
   return (
     <main className="page-frame" ref={pageRef}>
       <section className="product-highlights" aria-labelledby="product-title">
         <header className="product-heading">
-          <h2 className="product-title dot-type" id="product-title">Product Highlights</h2>
+          <h2 className="product-title pixel-type" id="product-title">Product Highlights</h2>
           <p className="product-caption">Our devices, redefined</p>
         </header>
         <div className="feature-grid">
@@ -362,17 +364,15 @@ function App() {
               className={`feature-card ${card.className}`}
               key={card.id}
               onPointerEnter={highlightPage}
-              onPointerLeave={clearPageHighlight}
-              onPointerMove={trackCardPointer}
+              onPointerLeave={clearPointerHighlight}
               onFocus={highlightPage}
               onBlur={clearPageHighlight}
               tabIndex={0}
             >
-              <div className={`feature-art feature-art--${card.art}`} aria-hidden="true">
+              <div className="feature-art" aria-hidden="true">
                 <img src={`/highlights/${card.id}.png`} alt="" loading="lazy" />
               </div>
-              <span className="feature-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg></span>
-              <h3 className="feature-label dot-type">{card.label}</h3>
+              <h3 className="feature-label pixel-type">{card.label}</h3>
             </article>
           ))}
         </div>
@@ -384,21 +384,21 @@ function App() {
         <div className="dot-edge dot-edge--left" aria-hidden="true" />
         <div className="dot-edge dot-edge--right" aria-hidden="true" />
         <div className="hero-copy">
-          <h1 className="dot-type dot-type--title" id="hero-title">Why Empire UI</h1>
+          <h1 className="pixel-type pixel-type--title" id="hero-title">Why Empire UI</h1>
           <div className="intro-wrap" ref={introRef}>
-            <p className="intro dot-type dot-type--body">{introText}</p>
+            <p className="intro pixel-type pixel-type--body">{introText}</p>
             <span className="intro-glitch-mask" aria-hidden="true" />
-            <p className="intro intro-morse dot-type dot-type--body" aria-hidden="true">{introMorse}</p>
+            <p className="intro intro-morse pixel-type pixel-type--body" aria-hidden="true">{introMorse}</p>
           </div>
         </div>
 
         <div className="word-stage" aria-hidden="true">
-          <span className="dot-type dot-type--word">Empire UI</span>
+          <span className="pixel-type pixel-type--word">Empire UI</span>
         </div>
 
         <aside className="community">
-          <h2 className="community-title dot-type dot-type--body">Join the community</h2>
-          <p className="community-copy dot-type dot-type--body">For the latest updates &amp; discounts</p>
+          <h2 className="community-title pixel-type pixel-type--body">Join the community</h2>
+          <p className="community-copy pixel-type pixel-type--body">For the latest updates &amp; discounts</p>
           <a className="community-link" href="https://discord.gg/RdKBQbFH" target="_blank" rel="noreferrer">
             <svg className="link-mark" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 2.7c-2.2 2.6-4.1 6.4-4.1 10.3 0 2.1 1.1 3.6 2.2 4.4l.4-3.1h3l.4 3.1c1.1-.8 2.2-2.3 2.2-4.4 0-3.9-1.9-7.7-4.1-10.3Z" />
